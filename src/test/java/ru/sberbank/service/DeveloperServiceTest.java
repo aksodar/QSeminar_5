@@ -15,11 +15,19 @@ class DeveloperServiceTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test()
+    @Test
     public void createTest_failValidation(){
-        Assertions.assertThrows(
+        String expectedMessage = "Входные данные не валидны";
+
+        Exception actualException = Assertions.assertThrows(
                 IllegalStateException.class,
-                () -> service.create(0, "", "")
+                () -> {
+                    service.create(0, "", "");
+                }
         );
+
+        Assertions.assertEquals(actualException.getMessage(), expectedMessage);
     }
+
+
 }
