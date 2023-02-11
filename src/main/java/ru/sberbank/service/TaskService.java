@@ -5,7 +5,11 @@ import ru.sberbank.data.Task;
 import java.util.ArrayList;
 
 public class TaskService {
-    private final ArrayList<Task> tasks;
+    public void setTasks(ArrayList<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    private ArrayList<Task> tasks;
 
     public TaskService() {
         this.tasks = new ArrayList<>();
