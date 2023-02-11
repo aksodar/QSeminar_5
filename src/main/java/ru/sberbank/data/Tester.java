@@ -5,7 +5,7 @@ public class Tester extends TeamMember{
         super(id, firstName, secondName);
     }
 
-    void checkTask(){
+    void Tester(){
         Task task = this.getCurrentTask();
         task.isTested = true;
         this.setCurrentTask(task);
