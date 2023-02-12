@@ -32,12 +32,12 @@ public class DeveloperService extends AbstractStorage<Developer> implements Data
 
     @Override
     public ArrayList<Developer> getListOfFree() {
-        ArrayList<Developer> freeTester = new ArrayList<>();
+        ArrayList<Developer> freeDeveloper = new ArrayList<>();
         for (Developer n: list) {
             if(n.isFree()) {
-                freeTester.add(n);
+                freeDeveloper.add(n);
             }
         }
-        return freeTester;
+        return freeDeveloper;
     }
 }
