@@ -5,11 +5,12 @@ import ru.sberbank.data.Task;
 import java.util.ArrayList;
 
 public class TaskService {
-    private final ArrayList<Task> tasks;
+    private ArrayList<Task> tasks;
 
     public TaskService() {
         this.tasks = new ArrayList<>();
     }
+
 
     public void createTask(int id, String summary) throws IllegalAccessException {
         if(summary == null || summary.isEmpty()){
@@ -27,6 +28,7 @@ public class TaskService {
         throw new IllegalAccessException("Задачи не найдены");
     }
 
+
     public ArrayList<Task> getTasksForDeveloping() {
         ArrayList<Task> list = new ArrayList<>();
         for (Task n: tasks) {
@@ -37,7 +39,12 @@ public class TaskService {
         return list;
     }
 
+    public void setTasks(ArrayList<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     public ArrayList<Task> getTasks() {
         return tasks;
     }
+
 }

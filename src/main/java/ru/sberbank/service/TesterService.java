@@ -20,10 +20,11 @@ public class TesterService extends AbstractStorage<Tester> implements DataServic
         return tester;
     }
 
+
     @Override
     public Tester get(String firstName, String secondName) throws IllegalStateException {
         for (Tester t: list)  {
-            if(firstName.equalsIgnoreCase(t.getFirstName()) && secondName.equalsIgnoreCase(t.getFirstName())) {
+            if(firstName.equalsIgnoreCase(t.getFirstName()) && secondName.equalsIgnoreCase(t.getSecondName())) {
                 return t;
             }
         }
@@ -43,5 +44,7 @@ public class TesterService extends AbstractStorage<Tester> implements DataServic
 
     public ArrayList<Tester> getListOfTesters(){
         return super.list;
+
     }
+
 }
