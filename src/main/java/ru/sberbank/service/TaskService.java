@@ -5,7 +5,7 @@ import ru.sberbank.data.Task;
 import java.util.ArrayList;
 
 public class TaskService {
-    private final ArrayList<Task> tasks;
+    private ArrayList<Task> tasks;
 
     public TaskService() {
         this.tasks = new ArrayList<>();
@@ -35,6 +35,10 @@ public class TaskService {
             }
         }
         return list;
+    }
+
+    public void setTasks(final ArrayList<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public ArrayList<Task> getTasks() {
