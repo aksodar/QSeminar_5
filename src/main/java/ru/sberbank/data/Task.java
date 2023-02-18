@@ -22,4 +22,8 @@ public class Task {
                 ", isTested=" + isTested + '\'' +
                 '}';
     }
+
+    public void setDeveloped(final boolean developed) {
+        isDeveloped = developed;
+    }
 }
