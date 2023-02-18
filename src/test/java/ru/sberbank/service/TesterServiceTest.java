@@ -13,46 +13,44 @@ public class TesterServiceTest {
     private TesterService service;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
+        // создаем окружение, которое будет использоваться каждый раз для каждого теста
         this.service = new TesterService();
     }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
+        // очищение
     }
 
     @Test
     public void createTesterTest_successful() throws IllegalAccessException {
-        Tester expected = new Tester (1 , "Иван", "Иванов");
+        Tester expected = new Tester(1, "Иван", "Иванов");
         service.create(1, "Иван", "Иванов");
-        Assertions.assertEquals(service.getListOfTesters().size(),1);
-
+        Assertions.assertEquals(service.getListOfTesters().size(), 1);
+        Assertions.assertEquals(expected, service.getListOfTesters().get(0));
     }
-
     @Test
-    public void getTesterTest_successful() throws IllegalAccessException{
-        Tester expected = new Tester (1 , "Иван", "Иванов");
+    public void getTesterTest_successful() throws IllegalStateException{
+        Tester expected = new Tester(1, "Иван", "Иванов");
         service.create(1, "Иван", "Иванов");
-        service.get("Иван", "Иванов");
-        Assertions.assertEquals(service.getListOfTesters().size(),1);
+        Assertions.assertEquals(expected, service.get("Иван", "Иванов"));
     }
 
     @Test
     public void getListOfFreeTest_successful(){
         ArrayList<Tester> expected = new ArrayList<>();
-        Tester tester1 = new Tester (1, "Иван", "Иван");
-        Tester tester2 = new Tester (2, "Ivan2", "Ivan3");
+        Tester tester1 = new Tester(1, "Иван", "Иванов");
+        Tester tester2 = new Tester(2, "Иван2", "Иванов2");
         tester1.setFree(true);
         tester2.setFree(false);
-
-        expected = service.getListOfTesters();
 
         expected.add(tester1);
         expected.add(tester2);
 
-        ArrayList<Tester> actual = service.getListOfFree();
-
-        Assertions.assertEquals(actual.size(), 1);
-        Assertions.assertEquals(actual.get(0), tester1);
+        service.setTester(expected);
+        Assertions.assertEquals(service.getListOfFree().size(), 1);
+        Assertions.assertEquals(service.getListOfFree().get(0), tester1);
     }
 }
+
